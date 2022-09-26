@@ -69,7 +69,7 @@ public class RaceToABillionBot
 				//Hidden Commands
 				new FoldCommand(), new RepelCommand(), new BlammoCommand(),
 				new DefuseCommand(), new WagerCommand(), new BonusCommand(),
-				new TruesightCommand(), new FailsafeCommand(), new MinesweeperCommand(),
+				new TruesightCommand(), new FailsafeCommand(), new MinesweeperCommand(), new StarmanCommand(),
 				//Minigame Commands
 				new EnhanceCommand(), new SkipCommand(), new TestMinigameCommand(),
 				//Info Commands

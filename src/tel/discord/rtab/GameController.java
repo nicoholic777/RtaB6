@@ -2472,4 +2472,14 @@ public class GameController
 			failsafeUser.addMoney(-1*fine, MoneyMultipliersToUse.NOTHING);
 		}
 	}
+	public void useStarman(int player)
+	{
+		Player summoner = players.get(player);
+		channel.sendMessage(summoner.getName() + "reaches to the sky and yells for the Starman. Everyone thought it was funny. But suddenly...").queue();
+		summoner.hiddenCommand = HiddenCommand.NONE;
+		if(warnPlayer != null)
+			warnPlayer.cancel(false);
+		resolvingTurn = true;
+		awardEvent(player, EventType.STARMAN);
+	}
 }

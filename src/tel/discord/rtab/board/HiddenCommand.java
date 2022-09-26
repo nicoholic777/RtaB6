@@ -60,7 +60,12 @@ public enum HiddenCommand implements WeightedSpace
 			+ "You may use this by typing **!repel** whenever any player is facing a blammo to automatically block it.\n"
 			+ "The person affected will then need to choose a different space from the board.",
 			"You currently possess **BLAMMO REPELLENT**.\n"
-			+ "You may use it when a blammo is in play by typing **!repel**.");
+			+ "You may use it when a blammo is in play by typing **!repel**."),
+	STARMAN(0,"**STARMAN SUMMONER**!\n"
+			+ "You can use this ultra-rare hidden command at any time by typing **!starman**.\n"
+			+ "This will call upon the Starman to **destroy *every single* bomb on the board**!",
+			"You currently possess a **STARMAN SUMMONER**.\n"
+			+ "You may use it at any time by typing **!starman**.");
 	
 	public final String pickupText;
 	public final String carryoverText;

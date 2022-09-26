@@ -50,6 +50,7 @@ public class Player
 	public int jackpot;
 	public boolean splitAndShare;
 	public boolean minigameLock;
+	public boolean stardustWon;
 	//In-game variables
 	boolean threshold;
 	boolean warned;
@@ -140,6 +141,7 @@ public class Player
 		annuities = new LinkedList<>();
 		totalLivesSpent = 0;
 		enhancedGames = new ArrayList<>();
+		stardustWon = false;
 		List<String> list;
 		try
 		{
@@ -488,7 +490,7 @@ public class Player
 	public void awardHiddenCommand()
 	{
 		//If we already have a wildcard, don't replace it that's mean
-		if(hiddenCommand == HiddenCommand.WILD)
+		if(hiddenCommand == HiddenCommand.WILD && !stardustWon)
 		{
 			if(!isBot)
 				user.openPrivateChannel().queue(
@@ -496,11 +498,17 @@ public class Player
 						.queueAfter(1, TimeUnit.SECONDS));
 			return;
 		}
-		//Get a random hidden command
+		//Get a random Hidden Command
 		HiddenCommand chosenCommand = Board.generateSpace(HiddenCommand.values());
 		//If the AI gets a wildcard, pick immediately what they should use it as (this is invisible to players and makes their logic simpler)
 		if(isBot && chosenCommand == HiddenCommand.WILD)
 			chosenCommand = HiddenCommand.values()[(int)(Math.random()*(HiddenCommand.values().length-2))+2];
+		//If Stardust jackpot was won, the command is replaced with the surprise Starman
+		if(stardustWon)
+		{
+			chosenCommand = HiddenCommand.STARMAN;
+			stardustWon = false
+		}
 		//We have to start building the help string now, before we actually award the new command to the player
 		StringBuilder commandHelp = new StringBuilder();
 		if(hiddenCommand != HiddenCommand.NONE)
